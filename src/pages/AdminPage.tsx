@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Icon from "@/components/ui/icon";
+import SEO from "@/components/SEO";
 
 const API_URL = "https://functions.poehali.dev/188a040c-47b0-43f4-a6ae-17aa04be1d45";
 
@@ -79,6 +80,12 @@ export default function AdminPage() {
 
   return (
     <div className="min-h-screen font-ibm" style={{ background: "#020b18", color: "#e0f7ff" }}>
+      <SEO
+        title="Админ-панель | Погода в доме"
+        description="Управление портфолио работ"
+        url="https://погода-вдоме.рф/admin"
+        noindex
+      />
 
       {/* NAV */}
       <nav className="sticky top-0 z-50" style={{ background: "rgba(2,11,24,0.97)", borderBottom: "1px solid rgba(0,212,255,0.15)", backdropFilter: "blur(12px)" }}>

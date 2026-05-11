@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Icon from "@/components/ui/icon";
+import SEO from "@/components/SEO";
 
 const API_URL = "https://functions.poehali.dev/188a040c-47b0-43f4-a6ae-17aa04be1d45";
 
@@ -28,8 +29,41 @@ export default function WorksPage() {
       .finally(() => setLoading(false));
   }, []);
 
+  const worksSchema = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://погода-вдоме.рф/" },
+        { "@type": "ListItem", "position": 2, "name": "Наши работы", "item": "https://погода-вдоме.рф/works" },
+      ],
+    },
+    ...(works.length > 0 ? [{
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Выполненные работы по установке кондиционеров",
+      "itemListElement": works.slice(0, 20).map((w, i) => ({
+        "@type": "ListItem",
+        "position": i + 1,
+        "item": {
+          "@type": "CreativeWork",
+          "name": w.title,
+          "description": w.description,
+          "image": w.image_url,
+        },
+      })),
+    }] : []),
+  ];
+
   return (
     <div className="min-h-screen font-ibm" style={{ background: "#020b18", color: "#e0f7ff" }}>
+      <SEO
+        title="Наши работы — фото установленных кондиционеров | Погода в доме"
+        description="Портфолио выполненных работ по установке кондиционеров: монтаж сплит-систем, мульти-сплит, закладка трассы, альпинистские работы. Реальные фото с объектов наших клиентов."
+        keywords="фото установки кондиционеров, портфолио монтажа, примеры работ кондиционирование, наши работы"
+        url="https://погода-вдоме.рф/works"
+        schema={worksSchema}
+      />
 
       {/* NAV */}
       <nav className="sticky top-0 z-50" style={{ background: "rgba(2,11,24,0.97)", borderBottom: "1px solid rgba(0,212,255,0.15)", backdropFilter: "blur(12px)" }}>
@@ -94,7 +128,9 @@ export default function WorksPage() {
                 <div className="aspect-video overflow-hidden">
                   <img
                     src={work.image_url}
-                    alt={work.title}
+                    alt={work.title ? `${work.title} — пример работы по установке кондиционера` : "Пример выполненной работы по установке кондиционера"}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
@@ -125,7 +161,7 @@ export default function WorksPage() {
             >
               <Icon name="X" size={24} />
             </button>
-            <img src={selected.image_url} alt={selected.title} className="w-full rounded-lg" />
+            <img src={selected.image_url} alt={selected.title ? `${selected.title} — фото выполненной работы` : "Фото выполненной работы"} loading="lazy" decoding="async" className="w-full rounded-lg" />
             {(selected.title || selected.description) && (
               <div className="mt-4 text-center">
                 {selected.title && <h3 className="font-oswald text-xl font-semibold" style={{ color: "#fff" }}>{selected.title}</h3>}

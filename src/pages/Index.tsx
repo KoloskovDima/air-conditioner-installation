@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Icon from "@/components/ui/icon";
+import SEO from "@/components/SEO";
 
 const HERO_IMAGE = "https://cdn.poehali.dev/projects/07a5d9ed-123e-4e5d-ac16-a8eb7a7551b8/files/5b7ef35c-835f-4c36-b933-ae6145709493.jpg";
 
@@ -121,8 +122,71 @@ export default function Index() {
     setSent(true);
   };
 
+  const homeSchema = [
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Погода в доме",
+      "description": "Установка, обслуживание и ремонт кондиционеров под ключ с гарантией по договору.",
+      "url": "https://погода-вдоме.рф/",
+      "image": "https://cdn.poehali.dev/projects/07a5d9ed-123e-4e5d-ac16-a8eb7a7551b8/files/og-image-1778432498580.jpg",
+      "priceRange": "₽₽",
+      "address": { "@type": "PostalAddress", "addressCountry": "RU" },
+      "areaServed": "RU",
+      "serviceType": ["Установка кондиционеров", "Обслуживание кондиционеров", "Ремонт кондиционеров", "Заправка кондиционеров"],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Установка кондиционеров под ключ",
+      "provider": { "@type": "LocalBusiness", "name": "Погода в доме", "url": "https://погода-вдоме.рф/" },
+      "areaServed": "RU",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Услуги по установке кондиционеров",
+        "itemListElement": services.map(s => ({
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": s.title, "description": s.desc },
+        })),
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Сколько стоит установка кондиционера?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Стоимость установки настенного кондиционера — от 16 000 ₽. Цена зависит от мощности и сложности монтажа. Полный прайс на странице /price." },
+        },
+        {
+          "@type": "Question",
+          "name": "Какая гарантия на установку?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Гарантия 2 года на все выполненные работы. При поломке по нашей вине устраняем бесплатно." },
+        },
+        {
+          "@type": "Question",
+          "name": "За сколько времени устанавливаете кондиционер?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Стандартная установка сплит-системы — 1 день. Мульти-сплит — 2–4 дня. Выезд мастера возможен в день обращения." },
+        },
+        {
+          "@type": "Question",
+          "name": "Заключаете ли договор?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Да, на каждый объект заключаем официальный договор. По завершении выдаём акт выполненных работ и гарантийный талон." },
+        },
+      ],
+    },
+  ];
+
   return (
     <div className="min-h-screen font-ibm" style={{ background: "#020b18", color: "#e0f7ff" }}>
+      <SEO
+        title="Установка кондиционеров под ключ — монтаж с гарантией по договору | Погода в доме"
+        description="Профессиональная установка кондиционеров под ключ от 16 000 ₽: монтаж, заправка, обслуживание. Работаем по договору, гарантия 2 года. Выезд мастера в день обращения."
+        keywords="установка кондиционеров, монтаж кондиционера, кондиционер под ключ, сплит-система установка, обслуживание кондиционеров, заправка кондиционера, ремонт кондиционеров"
+        url="https://погода-вдоме.рф/"
+        schema={homeSchema}
+      />
 
       {/* NAV */}
       <nav
@@ -184,7 +248,7 @@ export default function Index() {
       {/* HERO */}
       <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={HERO_IMAGE} alt="hero" className="w-full h-full object-cover opacity-25" />
+          <img src={HERO_IMAGE} alt="Профессиональная установка кондиционеров — Погода в доме" fetchPriority="high" className="w-full h-full object-cover opacity-25" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(2,11,24,0.95) 0%, rgba(6,15,32,0.7) 50%, rgba(2,11,24,0.9) 100%)" }} />
         </div>
 

@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Icon from "@/components/ui/icon";
+import SEO from "@/components/SEO";
 
 const priceCategories = [
   {
@@ -80,8 +81,33 @@ const priceCategories = [
 export default function PricePage() {
   const navigate = useNavigate();
 
+  const priceSchema = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://погода-вдоме.рф/" },
+        { "@type": "ListItem", "position": 2, "name": "Цены", "item": "https://погода-вдоме.рф/price" },
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "PriceSpecification",
+      "name": "Установка кондиционеров — прайс-лист",
+      "priceCurrency": "RUB",
+      "minPrice": "16000",
+    },
+  ];
+
   return (
     <div className="min-h-screen font-ibm" style={{ background: "#020b18", color: "#e0f7ff" }}>
+      <SEO
+        title="Цены на установку кондиционеров — прайс-лист с гарантией | Погода в доме"
+        description="Прайс на установку кондиционеров: монтаж сплит-систем от 16 000 ₽, мульти-сплит от 30 000 ₽, обслуживание от 5 000 ₽. Закладка трассы, демонтаж, альпинисты. Цены по договору."
+        keywords="цена установки кондиционера, прайс монтажа сплит-системы, стоимость заправки кондиционера, цена обслуживания кондиционера"
+        url="https://погода-вдоме.рф/price"
+        schema={priceSchema}
+      />
 
       {/* NAV */}
       <nav

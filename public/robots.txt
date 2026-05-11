@@ -1,14 +1,18 @@
 User-agent: *
 Allow: /
 Disallow: /admin
+Disallow: /admin/
 
 User-agent: Googlebot
 Allow: /
 Disallow: /admin
+Disallow: /admin/
 
 User-agent: Yandex
 Allow: /
 Disallow: /admin
+Disallow: /admin/
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term
 
 User-agent: Bingbot
 Allow: /
@@ -20,5 +24,5 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-Host: https://погода-вдоме.рф
-Sitemap: https://погода-вдоме.рф/sitemap.xml
+Host: https://xn----7sbbac0aldcq0bzc.xn--p1ai
+Sitemap: https://xn----7sbbac0aldcq0bzc.xn--p1ai/sitemap.xml
