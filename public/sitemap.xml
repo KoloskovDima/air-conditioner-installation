@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://погода-вдоме.рф/</loc>
+        <loc>https://xn----7sbbac0aldcq0bzc.xn--p1ai/</loc>
         <lastmod>2026-05-11</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://погода-вдоме.рф/price</loc>
+        <loc>https://xn----7sbbac0aldcq0bzc.xn--p1ai/price</loc>
         <lastmod>2026-05-11</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://погода-вдоме.рф/works</loc>
+        <loc>https://xn----7sbbac0aldcq0bzc.xn--p1ai/works</loc>
         <lastmod>2026-05-11</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
